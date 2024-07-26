@@ -1,7 +1,7 @@
 const express = require('express');
-const userRoutes = require('./routes/userRoutes'); 
-const authRoutes = require('./routes/authRoutes');
-const authMiddleware = require ('../middleware/auth');
+const userRoutes = require('./app/routes/userRoutes'); 
+const authRoutes = require('./app/routes/authRoutes');
+const authMiddleware = require ('./app/middleware/auth');
 
 const app = express();
 const port = 3000;

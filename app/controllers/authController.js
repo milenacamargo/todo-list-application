@@ -1,5 +1,5 @@
-const { gerarToken  } = require('../../service/tokenService');
-const { User } = require('../../models');
+const { gerarToken  } = require('../service/tokenService');
+const { User } = require('../../database/models');
 
 const login = async (req,res) =>{
   const { email, senha } = req.body;
