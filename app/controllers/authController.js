@@ -7,12 +7,11 @@ const login = async (req,res) =>{
     return res.status(400).json({ error: 'Email e senha são obrigatórios' });
   }
   try{
-    const user = await User.findOne({ where: { email }});
-
-    if(!user || (await user.validarSenha(senha))){
-      return res.status(401).json({ error: 'Credenciais inválidas'});
+    const user = await User.findOne({ where: { email, senha }});
+    if (!user || user.senha !== senha) {
+      return res.status(401).json({ error: 'Credenciais inválidas' });
     }
-
+    
     const token = gerarToken({id:user.id, email: user.email});
     res.json({ token });
   }catch(error){
