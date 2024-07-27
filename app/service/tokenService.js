@@ -3,8 +3,15 @@ const jwt = require('jsonwebtoken');
 const chave = 'rambo';
 
 function gerarToken(payload){
-  const token = jwt.sign(payload, chave,{expiresIn: '1h'});
-  return token;
+  try{
+    payload.user.senha = null;
+    const token = jwt.sign(payload, chave,{expiresIn: '1h'});
+    return token;
+  }catch(error){
+    return { error:error.message };
+  }
+  
+ 
 }
 
 function verificarToken(token){
@@ -13,7 +20,7 @@ function verificarToken(token){
     return decoded;
   }
   catch(err){
-    return null;
+    return { error:error.message };
   }
 }
 
