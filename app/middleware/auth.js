@@ -13,7 +13,6 @@ function authMiddleware(req, res,next){
   }
 
   req.user = decodedPayload;
-  console.log(req.user);
   next();
 }
 

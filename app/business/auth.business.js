@@ -5,11 +5,16 @@ const { gerarToken  } = require('../service/tokenService');
 async function newLoginBusiness (email, senha){
   try{
     const login = await newLoginData(email, senha);
-    const token = gerarToken({user: login.user.dataValues });
+
+    if (!login) {
+      throw new Error('Usuário não encontrado');
+    }
+    const token = gerarToken({user: login.dataValues });
+
 
     return token;
   }catch(error){
-    return { error:error.message };
+   throw error;
   }
 };
 

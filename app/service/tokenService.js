@@ -4,7 +4,9 @@ const chave = 'rambo';
 
 function gerarToken(payload){
   try{
+
     payload.user.senha = null;
+    console.log(payload);
     const token = jwt.sign(payload, chave,{expiresIn: '1h'});
     return token;
   }catch(error){
@@ -24,13 +26,6 @@ function verificarToken(token){
   }
 }
 
-
-/*
-if(decodedPayload){
-  console.log ('Informações Decodificadas', decodedPayload);
-}else{
-  console.log('Token inválido ou expirado');
-}*/
 
 module.exports = {
   gerarToken,
