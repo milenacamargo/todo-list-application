@@ -10,6 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       descricao: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       usuarioId: {
