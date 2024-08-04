@@ -3,10 +3,15 @@ const { createUser  } = require('../datasource/user.datasource');
 async function createUserBusiness (nome, email, senha){
   try{
     const newUser = await createUser( nome, email, senha );
-    console.log( nome );
-    return newUser;
+    return user = {
+      "createdAt": newUser.createdAt,
+      "updatedAt": newUser.updatedAt,
+      "id": newUser.id,
+      "nome": newUser.nome,
+      "email": newUser.email,
+    };
   }catch(error){
-    res.status(400).json({ error: error.message});
+    throw error;
   }
 };
 

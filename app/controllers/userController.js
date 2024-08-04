@@ -6,7 +6,7 @@ const createUser = async(req,res)=>{
     const user = await createUserBusiness(nome, email, senha);
     return res.status(200).json({ user });
   }catch(error){
-      res.status(500).json({ error: 'Erro ao criar usuário' })
+      res.status(500).json({ error: error.message })
   }
   
   

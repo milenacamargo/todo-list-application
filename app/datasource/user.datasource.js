@@ -5,7 +5,7 @@ async function createUser (nome, email, senha){
     const newUser = await User.create({ nome, email, senha });
     return newUser;
   }catch(error){
-    res.status(400).json({ error: error.message});
+    throw error;
   }
 };  
 
